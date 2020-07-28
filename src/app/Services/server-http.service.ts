@@ -20,17 +20,31 @@ export class ServerHttpService {
     }),
   };
   private REST_API_SERVER = "https://5f0eb150faef3500160b87ab.mockapi.io/api";
-
+  private REST_API_SERVER_COVID = "https://api.covid19api.com";
   constructor(private httpClient: HttpClient) {}
 
-  public getusers(): Observable<any>{
+  public getDataCovid(): Observable<any> {
+    const url = `${this.REST_API_SERVER_COVID}`;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getDataCovidCountry(): Observable<any> {
+    const url = `${this.REST_API_SERVER_COVID}/summary`;
+    return this.httpClient
+      .get<any>(url, this.httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  public getusers(): Observable<any> {
     // const url = `${this.REST_API_SERVER}/students`;
     const url = `${this.REST_API_SERVER}/users`;
     return this.httpClient
       .get<any>(url, this.httpOptions)
       .pipe(catchError(this.handleError));
   }
-  public getUser(id:number) {
+  public getUser(id: number) {
     const url = `${this.REST_API_SERVER}/users/` + id;
     return this.httpClient
       .get<any>(url, this.httpOptions)
@@ -47,7 +61,7 @@ export class ServerHttpService {
     const url = `${this.REST_API_SERVER}/users/` + id;
     return this.httpClient.delete<any>(url).pipe(catchError(this.handleError));
   }
-  public updateUser( data:Users) {
+  public updateUser(data: Users) {
     const url = `${this.REST_API_SERVER}/users/` + data.id;
     return this.httpClient
       .put<any>(url, data, this.httpOptions)

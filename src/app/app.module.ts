@@ -46,6 +46,7 @@ import { CustomerEffect } from './store/effects/user.effects';
 // stripe
 
 import { NgxStripeModule } from 'ngx-stripe';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,

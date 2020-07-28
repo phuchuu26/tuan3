@@ -1,0 +1,51 @@
+// a.btn{
+//   min-width: 85px;
+// }
+th {
+  max-width: 20px!important;
+}
+th {
+  font-size: 9px!important;
+
+}
+th#a{
+  font-size:17px!important;
+  text-align-last: center;
+}
+th#b{
+  font-size:14px!important;
+  text-align-last: center;
+}
+
+//chu
+// the div quanh chu
+.a1{
+  // position: absolute;
+  // top:50%;
+
+}
+.tab{
+  margin: 0px;
+  padding: 0px;
+}
+.a11{
+  color:transparent;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right ,#fbc531, #f00, #ff0,white, #0ff, #0f0,#00f,#f1c40f,white,#c23616,#8c7ae6,#00a8ff);
+  animation: animate 10s  linear infinite;
+  background-size: 1000%;
+}
+@keyframes animate{
+  0%
+  {
+    background-position:0% 100%;
+  }
+  50%
+  {
+    background-position:100% 0%;
+  }
+  100%
+  {
+    background-position:0% 100%;
+  }
+}

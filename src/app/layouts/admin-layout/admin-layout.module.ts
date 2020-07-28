@@ -20,6 +20,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { AgmCoreModule } from "@agm/core";
 import { NgxStripeModule } from 'ngx-stripe';
+import {NgxPaginationModule} from 'ngx-pagination';
 @NgModule({
   imports: [
     AgmCoreModule,
@@ -33,6 +34,7 @@ import { NgxStripeModule } from 'ngx-stripe';
     FlexLayoutModule,
     MatCardModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     NgxStripeModule.forRoot('pk_test_52DU0HNaT3yQjlK5Mg5H6SER00DJsQHl0U')
   ],
   declarations: [

@@ -35,6 +35,8 @@
     "chart.js": "2.7.3",
     "clipboard": "2.0.4",
     "core-js": "3.6.4",
+    "lodash": "^4.17.19",
+    "moment": "^2.27.0",
     "ng-snotify": "^9.0.1",
     "ngx-clipboard": "13.0.0",
     "ngx-google-places-autocomplete": "^2.0.4",
