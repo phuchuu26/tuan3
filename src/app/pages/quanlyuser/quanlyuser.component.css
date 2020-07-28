@@ -1,0 +1,12 @@
+a.btn{
+  min-width: 85px;
+}
+ul.ngx-pagination{
+  background-color: currentColor!important;
+}
+.ngx-pagination .current {
+  background: red;
+}
+ngx-pagination{
+  background-color: red!important;
+}

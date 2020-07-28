@@ -1,0 +1,106 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+
+  <!-- Dark table -->
+  <div class="row mt-5">
+    <div class="col">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0">User Management</h3>
+          <div class="lol-4 text-right">
+            <a (click)="themuser()"class="btn btn-sm btn-success mr-2">Add</a>
+          </div>
+        </div>
+          <h1 colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</h1>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">FULLNAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">PHONE</th>
+                <th scope="col">PASSWORD</th>
+                <th scope="col">AVATAR</th>
+                <th scope="col">ADDRESS</th>
+                <th scope="col">STATUS</th>
+                <th scope="col">ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of (customers$ |async)| paginate: { itemsPerPage: 5, currentPage: p }">
+                <th scope="row">
+                  <!-- <div class="media align-items-center">
+                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
+                      <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg">
+                    </a>
+                    <div class="media-body">
+                      <span class="mb-0 text-sm">Argon Design System</span>
+                    </div>
+                  </div> -->
+                  {{user?.id}}
+                </th>
+                <td>
+                 {{user?.fullname}}
+                </td>
+                <td>
+                  {{user?.email}}
+                </td>
+                <td>
+                  {{user?.phone}}
+                </td>
+                <td>
+                  {{user?.password}}
+                </td>
+                <td>
+                 <!-- {{user?.avatar}} -->
+                    <a href="javascript:void(0)" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
+                  <img *ngIf="user?.avatar.length >= 20" [src]="user.avatar" style="width:70px; margin-top: 22px;" class="rounded-circle">
+                  <img *ngIf="user?.avatar.length <= 20" src="assets\img\shared\1.png" style="width:60px; height: 70px;  background-size: cover; ; margin-top: 22px;" class="rounded-circle">
+                </a>
+                </td>
+                <td>
+                  {{user?.address}}
+                </td>
+                <td>
+                  <a (click)="nhap(user.id)" *ngIf="user.status === true" class="btn btn-sm btn-success mr-2">Active</a>
+                  <a (click)="nhap(user.id)" *ngIf="user.status !== true" class="btn btn-sm btn-warning mr-2">Deactive</a>
+                  <!-- {{(user?.status) === true ? 'Active' : 'Deactive'}} -->
+                  <br>
+                  <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info mr-2">Confirm</a> -->
+                </td>
+                <td>
+
+                  <br> <br>
+                  <a (click)="editUser(user.id)" class="btn btn-sm btn-light mr-2">Edit</a>
+                   <br> <br>
+                  <a  (click)="xoaUser(user.id)" class="btn btn-sm btn-danger mr-2">Delete</a>
+                  <!-- <div ngbDropdown placement="bottom-right">
+                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
+                      <a class="dropdown-item"  >Add</a>
+                      <a class="dropdown-item" href="javascript:void(0)">Update</a>
+                      <a class="dropdown-item" href="javascript:void(0)">Delete</a>
+                    </div>
+                  </div> -->
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pagination-controls class="page" (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

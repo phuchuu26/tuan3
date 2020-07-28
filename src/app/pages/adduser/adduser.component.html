@@ -1,0 +1,138 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+
+    <div class="col-xl-12 order-xl-1">
+      <div class="card bg-gray shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <!-- <h3 class="mb-0" >{{ id > 0 ? 'Add User' : 'Edit User'}}</h3> -->
+              <h3 class="mb-0" *ngIf="id===0" >Add User</h3>
+              <h3 class="mb-0" *ngIf="id!==0" >Edit User</h3>
+            </div>
+            <div class="col-4 text-right">
+              <button [routerLink]="['/quanlyusers']" class="btn btn-sm btn-primary"> Back</button>
+              <!-- <a   href="#" class="btn btn-sm btn-primary">Back</a> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <form [formGroup]="userForm" novalidate>
+            <h6 class="heading-small text-muted mb-4">User information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-username">Full Name</label>
+                    <input type="text" id="input-username" formControlName="fullname" class="form-control form-control-alternative"  placeholder="Username">
+                    <!-- <div class="red" *ngIf="name.touched">
+                      <div *ngIf="name.errors?.required">
+                        Name is required!
+                      </div>
+                    </div> -->
+                    <h5 class="error" *ngIf="this.userForm.controls.fullname.value.length <=3"> Bạn phải nhập vào ô</h5>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-email">Email</label>
+                    <input type="email"   formControlName="email"  id="input-email" class="form-control form-control-alternative" placeholder="jesse@example.com">
+                    <h5 class="error" *ngIf="this.userForm.controls.fullname.value.length <=3"> Bạn phải nhập đúng email</h5>
+                    <!-- <p *ngIf="field.errors?.email">error message</p> -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-phone">Phone</label>
+                    <input type="text" id="input-phone"  formControlName="phone" class="form-control form-control-alternative" placeholder="First name" value="">
+                    <h5 class="error" *ngIf="!this.userForm.controls.phone.value"> Bạn phải nhập vào ô</h5>
+                    <h5 class="error" *ngIf="this.userForm.controls.phone.value.length < 10 && this.userForm.controls.phone.value !=''"> Bạn phải nhập đủ số điện thoại</h5>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+
+                    <label class="form-control-label" for="input-pass">Password</label>
+                    <input type="password" id="input-pass"  formControlName="password" class="form-control form-control-alternative" placeholder="" value="">
+                    <h5 class="error" *ngIf="this.userForm.controls.fullname.value.length <=3"> Bạn phải nhập vào ô</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-address">Address</label>
+                    <input type="text" id="input-address"  formControlName="address" class="form-control form-control-alternative" placeholder="" value="">
+                    <h5 class="error" *ngIf="this.userForm.controls.fullname.value.length <=3"> Bạn phải nhập vào ô</h5>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group  text-center">
+                    <label class="form-control-label"  for="input-image">Avatar</label>
+                    <!-- <input type="password" id="input-last-name" class="form-control form-control-alternative" placeholder="" value=""> -->
+
+
+                    <div>
+                      <input id="image" type="file" formControlName="avatar"  name="image" (change)="onChangeImage($event,this)" style="display: none;" ngModel>
+                    </div>
+                    <label for="image">
+                      <img style="border-radius: 72px;" [src]="urlImage" width="150px" height="150px"  alt="Image not found">
+                    </label>
+
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group text-center">
+
+
+                    <label  class="form-control-label"  for="input-status">Status</label>
+                    <button *ngIf="id!==0" formControlName="status" (click)="changeStatus()" value="{{userForm.controls.status.value}}" class="form-control btn btn-lg btn-primary">
+                      {{tt == true ? 'active' : 'detive'}}
+                    </button>
+                    <button *ngIf="id===0" formControlName="status" (click)="doitrangthai()" value="false" class="form-control btn btn-lg btn-primary"  [style.background-color]=" tt1 === true ? '#5e72e4' : '#f5365c'" >
+                      {{tt1 == true ? 'active' : 'detive'}}
+                    </button>
+                    <!-- <h1 *ngIf="userForm.controls.status.value"> {{ userForm.controls.status.value }}</h1> -->
+                      <!-- <button (click)="changeStatus()" type="number" id="input-status" *ngIf="userForm.controls.status.value == true" formControlName="status" class="form-control btn btn-lg btn-info " value="true" >Active</button>
+                    <button (click)="changeStatus()" type="number" id="input-status" *ngIf="userForm.controls.status.value == false"  formControlName="status" class="form-control btn btn-lg btn-default " value="false">Deactive</button> -->
+                    <!-- <h1 (click)="changeStatus()" type="number" id="input-status"  formControlName="status" [ngClass]=" userForm.controls.status.value == true ? 'form-control btn btn-lg btn-default' :  'form-control btn btn-lg btn-info' " placeholder="" >{{userForm.controls.status.value != true ? 'Active' :'Deactive' }}</h1> -->
+                    <!-- <button *ngIf=" userForm.controls.status.value ==1" type="number" id="input-status"  formControlName="status"  class="form-control btn btn-lg btn-primary" placeholder="" value="1">Active </button> -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+
+              </div>
+            </div>
+            <hr class="my-4" />
+
+            <!-- Address -->
+            <!-- <h6 class="heading-small text-muted mb-4">Contact information</h6> -->
+
+            <!-- <hr class="my-4" /> -->
+            <!-- Description -->
+            <!-- <h6 class="heading-small text-muted mb-4">About me</h6> -->
+            <div class="col-12 text-center">
+              <button *ngIf="id===0" [disabled]="!userForm.valid" (click)="save()" class="btn btn-lg btn-primary">Submit</button>
+              <button *ngIf="id!==0" [disabled]="!userForm.valid" (click)="save()" class="btn btn-lg btn-primary">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-snotify></ng-snotify>

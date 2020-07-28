@@ -1,0 +1,25 @@
+.card-body{
+  background-color: #ffeaa7;
+}
+input.ng-invalid{
+  /* border-left: 7px solid red; */
+  border: 2px solid rgb(224, 91, 91);
+}
+input.ng-valid{
+  /* border-left: 7px solid green; */
+  border: 2px solid rgb(0, 255, 0);
+}
+
+.error{
+  margin-top: -15px;
+  color:rgb(224, 91, 91);
+  padding-top: 17px;
+  float: right;
+}
+img{
+  /* border: 2px solid red; */
+}
+/* input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */

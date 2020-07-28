@@ -1,0 +1,134 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-4 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">
+                    MAP
+                  </h5>
+                  <span class="h2 font-weight-bold mb-0">350,897</span>
+                </div>
+                <div class="col-auto">
+                  <div
+                    class="icon icon-shape bg-danger text-white rounded-circle shadow"
+                  >
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"
+                  ><i class="fa fa-map-marker" aria-hidden="true"></i> </span
+                >
+                <span class="text-nowrap">Google Autocomplete</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <h5 class="card-title text-uppercase text-muted mb-0">
+                Nhập địa điểm cần tiềm
+              </h5>
+              <!-- <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Nhập thông tin địa chỉ vào</h5>
+                </div>
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Trục X</h5>
+                  <span class="h2 font-weight-bold mb-0"></span>
+                  <input type="text" id="input-phone" [(ngModel)]="x" class="form-control" placeholder="X" value="">
+                </div>
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Trục Y</h5>
+                  <span class="h2 font-weight-bold mb-0"></span>
+                  <input type="text" id="input-phone" [(ngModel)]="y" class="form-control" placeholder="Y" value="">
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-chart-pie"></i>
+                  </div>
+                </div>
+              </div> -->
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-danger mr-2"
+                  ><i class="fa fa-map-marker" aria-hidden="true"></i> </span
+                >
+
+                <input (click)="change($event)" id="iput" [(ngModel)]="iput" style="margin-left: 10px;"
+                  ngx-google-places-autocomplete
+                  [options]="options"
+                  #placesRef="ngx-places"
+                  (onAddressChange)="handleAddressChange($event)"
+                />
+              </p>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"
+                  ><i class="fa fa-globe" aria-hidden="true"></i> </span
+                >
+                <span class="text-nowrap">Nation : {{  quocgia}}</span>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow border-0">
+        <mat-card style="margin-top: 0px;">
+          <div
+            fxFlex.xs="100"
+            fxFlex.sm="100"
+            fxFlex.md="100"
+            fxFlex.lg="100"
+            fxFlex.xl="100"
+          >
+            <div fxLayout="row wrap" class="col-gap">
+              <div
+                fxFlex.xs="50"
+                fxFlex.sm="50"
+                fxFlex.md="50"
+                fxFlex.lg="50"
+                fxFlex.xl="50"
+              ></div>
+              <div
+                fxFlex.xs="50"
+                fxFlex.sm="50"
+                fxFlex.md="50"
+                fxFlex.lg="50"
+                fxFlex.xl="50"
+              >
+                <!-- Mapa -->
+                <div class="a">
+                  <agm-map
+                    [latitude]="latitude"
+                    [longitude]="longitude"
+                    [zoom]="zoom"
+                  >
+                    <agm-marker
+                      [latitude]="latitude"
+                      [longitude]="longitude"
+                    ></agm-marker>
+                  </agm-map>
+                </div>
+                <!-- Final Mapa -->
+              </div>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
