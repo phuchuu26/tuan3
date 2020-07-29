@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ServerHttpService } from "src/app/Services/server-http.service";
 import * as _ from 'lodash';
+import * as moment from 'moment';
 @Component({
   selector: "app-user-profile",
   templateUrl: "./user-profile.component.html",
@@ -11,7 +12,7 @@ export class UserProfileComponent implements OnInit {
   public global: [];
   public countries: [];
   constructor(private http: ServerHttpService) {}
-  
+
   ngOnInit() {
     // this.http.getDataCovid().subscribe((data) => {
     //   console.log(data);

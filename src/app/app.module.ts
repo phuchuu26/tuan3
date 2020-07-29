@@ -47,7 +47,7 @@ import { CustomerEffect } from './store/effects/user.effects';
 
 import { NgxStripeModule } from 'ngx-stripe';
 import { ChartjsComponent } from './pages/chartjs/chartjs.component';
-
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -75,7 +75,7 @@ import { ChartjsComponent } from './pages/chartjs/chartjs.component';
     SnotifyModule,
     // StoreModule,
     // CustomFormsModule,
-
+    ChartsModule,
     AgmCoreModule.forRoot({
       apiKey : 'AIzaSyCL436G6FzMqnMpWjJjV60pTWBHqDa-QgI',
       // AIzaSyCUDMoEVgLbPnLLhNw4MTis5UpTfYhpuXM

@@ -18,7 +18,17 @@
         <div class="card-body">
           <div class="container">
             <!-- code  -->
-
+            <div style="width: 100%;">
+              <canvas
+                  baseChart
+                  [chartType]="'bar'"
+                  [datasets]="chartData"
+                  [labels]="chartLabels"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  (chartClick)="onChartClick($event)">
+              </canvas>
+            </div>
             <!-- code  -->
 
           </div>
