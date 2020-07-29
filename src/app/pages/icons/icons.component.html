@@ -8,6 +8,12 @@
   <!-- Table -->
   <div class="row">
     <div class="col">
+      <button  disabled="disabled" [routerLink]="['/icons']" type="button" class="btn btn-dark mt-4">
+        Card Token
+       </button>
+       <button [routerLink]="['/banktoken']" type="button" class="btn btn-dark mt-4">
+         Bank Token
+       </button>
       <div class="card shadow">
         <div class="card-header bg-transparent">
           <h3 class="mb-0">Thanh toán Điện tử (Stripe)</h3>
@@ -41,7 +47,9 @@
             </button>
 
           </form>
-          {{token}}
+          <button  type="button" class="btn btn-secondary mt-4">
+           Card Token : {{token}}
+          </button>
         </div>
 
 

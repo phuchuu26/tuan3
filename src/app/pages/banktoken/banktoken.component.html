@@ -1,0 +1,60 @@
+<div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body"></div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <!-- Table -->
+  <div class="row">
+    <div class="col">
+      <button [routerLink]="['/icons']" type="button" class="btn btn-dark mt-4">
+       Card Token
+      </button>
+      <button disabled="disabled" [routerLink]="['/banktoken']" type="button" class="btn btn-dark mt-4">
+        Bank Token
+      </button>
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <h3 class="mb-0">Thanh toán Điện tử (Create Bank Token)</h3>
+        </div>
+        <div class="card-body">
+
+          <div class="container">
+            <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
+
+              <div class="theinput">
+              <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                   <span class="input-group-text"><i style="font-size:25px" class="fab fa-cc-stripe"></i></span>
+                  </div>
+                  <input class="form-control"  formControlName="name"  placeholder="Name" type="text" (focus)="focus = true"
+                  (blur)="focus = false">
+                </div>
+              </div>
+            </div>
+              <!-- <input type="text" formControlName="name" placeholder="Jane Doe" /> -->
+              <div id="card-element" class="field"></div>
+
+              <!-- ngx-stripe-au-bank-account -->
+              <button
+                style="margin-left: 240px!important;"
+                type="submit"
+                class="btn btn-primary mt-4"
+              >
+                BUY
+              </button>
+
+            </form>
+            <button  type="button" class="btn btn-secondary mt-4">
+              Bank Token : {{token}}
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

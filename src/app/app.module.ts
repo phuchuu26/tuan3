@@ -48,6 +48,7 @@ import { CustomerEffect } from './store/effects/user.effects';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ChartjsComponent } from './pages/chartjs/chartjs.component';
 import { ChartsModule } from 'ng2-charts';
+import { BanktokenComponent } from './pages/banktoken/banktoken.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -106,6 +107,7 @@ import { ChartsModule } from 'ng2-charts';
     QuanlyuserComponent,
     AdduserComponent,
     ChartjsComponent,
+    BanktokenComponent,
 
   ],
   providers: [ { provide: 'SnotifyToastConfig', useValue: ToastDefaults},

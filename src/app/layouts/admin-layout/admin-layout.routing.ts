@@ -8,6 +8,7 @@ import { TablesComponent } from '../../pages/tables/tables.component';
 import { QuanlyuserComponent } from 'src/app/pages/quanlyuser/quanlyuser.component';
 import { AdduserComponent } from 'src/app/pages/adduser/adduser.component';
 import { ChartjsComponent } from 'src/app/pages/chartjs/chartjs.component';
+import { BanktokenComponent } from 'src/app/pages/banktoken/banktoken.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -18,4 +19,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'quanlyusers',      component: QuanlyuserComponent },
     { path: 'add-user/:id', component: AdduserComponent },
     { path: 'chartjs', component: ChartjsComponent },
+    { path: 'banktoken', component: BanktokenComponent },
 ];

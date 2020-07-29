@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { ChartjsComponent } from './pages/chartjs/chartjs.component';
+import { BanktokenComponent } from './pages/banktoken/banktoken.component';
 
 const routes: Routes =[
   {
@@ -34,8 +35,9 @@ const routes: Routes =[
   {
     path: 'chartjs',
     component: ChartjsComponent
-  }
-  , {
+  },
+  // { path: 'banktoken', component: BanktokenComponent },
+   {
     path: '**',
     redirectTo: 'dashboard'
   }
