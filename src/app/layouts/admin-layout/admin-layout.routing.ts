@@ -7,6 +7,7 @@ import { UserProfileComponent } from '../../pages/user-profile/user-profile.comp
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { QuanlyuserComponent } from 'src/app/pages/quanlyuser/quanlyuser.component';
 import { AdduserComponent } from 'src/app/pages/adduser/adduser.component';
+import { ChartjsComponent } from 'src/app/pages/chartjs/chartjs.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -16,4 +17,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'quanlyusers',      component: QuanlyuserComponent },
     { path: 'add-user/:id', component: AdduserComponent },
+    { path: 'chartjs', component: ChartjsComponent },
 ];

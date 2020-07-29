@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ServerHttpService } from "src/app/Services/server-http.service";
-
+import * as _ from 'lodash';
 @Component({
   selector: "app-user-profile",
   templateUrl: "./user-profile.component.html",
@@ -11,7 +11,7 @@ export class UserProfileComponent implements OnInit {
   public global: [];
   public countries: [];
   constructor(private http: ServerHttpService) {}
-
+  
   ngOnInit() {
     // this.http.getDataCovid().subscribe((data) => {
     //   console.log(data);
@@ -32,6 +32,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   public  orderBy(key, dir){
+    console.log(key);
+
+    // this.countries.forEach(function (v){
+      // v = _.orderBy(v, key, dir);
+    // })
     this.countries = _.orderBy(this.countries, key, dir)
   }
 

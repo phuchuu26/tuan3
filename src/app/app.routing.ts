@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { ChartjsComponent } from './pages/chartjs/chartjs.component';
 
 const routes: Routes =[
   {
@@ -29,7 +30,12 @@ const routes: Routes =[
         loadChildren: './layouts/auth-layout/auth-layout.module#AuthLayoutModule'
       }
     ]
-  }, {
+  },
+  {
+    path: 'chartjs',
+    component: ChartjsComponent
+  }
+  , {
     path: '**',
     redirectTo: 'dashboard'
   }

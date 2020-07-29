@@ -8,104 +8,134 @@
   <!-- Table -->
   <div class="row">
     <div class="col">
+      <button [routerLink]="['/chartjs']" type="button" class="btn btn-secondary mt-4">
+        Biểu đồ
+      </button>
       <div class="card shadow">
         <div class="card-header bg-transparent">
           <h3 class="mb-0">Chương trình Thống kê CoronaVirus - Covid 19</h3>
         </div>
         <div class="card-body">
-
           <div class="container">
-              <!-- code  -->
-              <div class="row mt-5">
-                <div class="col">
-                  <div class="card bg-default shadow">
-                    <div class="card-header bg-transparent border-0">
-                      <h3 class="text-white mb-0">COVID-19</h3>
-                      <div class="lol-4 text-right">
-                        <a class="btn btn-sm btn-success mr-2">Add</a>
-                      </div>
-                    </div>
-                      <!-- <h1 colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</h1> -->
-                    <div class="table-responsive">
-                      <table class="table align-items-center table-dark table-flush">
-                        <thead class="thead-dark">
-                          <tr  class="a1">
-                            <th class="a11" scope="col">Số ca nhiễm mới phát hiện</th>
-                            <th  class="a11" scope="col">Số ca tử vong trong ngày</th>
-                            <th  class="a11" scope="col">Số ca chữa khỏi trong ngày</th>
-                            <th class="a11" scope="col">Tổng số ca nhiễm</th>
-                            <th  class="a11" scope="col">Tổng số ca tử vong</th>
-                            <th  class="a11" scope="col">Tổng ca chữa khỏi</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <!-- | paginate: { itemsPerPage: 5, currentPage: p } -->
-                          <tr>
-                            <th id="a" class="a11" *ngFor="let data of global | keyvalue" >
-                              {{data.value | number:"0.0"}} người
-                            </th>
-
-                          </tr>
-                        </tbody>
-                      </table>
+            <!-- code  -->
+            <div class="row mt-5">
+              <div class="col">
+                <div class="card bg-default shadow">
+                  <div class="card-header bg-transparent border-0">
+                    <h3 class="text-white mb-0">COVID-19</h3>
+                    <div class="lol-4 text-right">
+                      <a class="btn btn-sm btn-success mr-2">Add</a>
                     </div>
                   </div>
-                  <!-- <pagination-controls class="page" (pageChange)="p = $event"></pagination-controls> -->
+                  <!-- <h1 colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</h1> -->
+                  <div class="table-responsive">
+                    <table
+                      class="table align-items-center table-dark table-flush"
+                    >
+                      <thead class="thead-dark">
+                        <tr class="a1">
+                          <th class="a11" scope="col">
+                            Số ca nhiễm mới phát hiện
+                          </th>
+                          <th class="a11" scope="col">
+                            Số ca tử vong trong ngày
+                          </th>
+                          <th class="a11" scope="col">
+                            Số ca chữa khỏi trong ngày
+                          </th>
+                          <th class="a11" scope="col">Tổng số ca nhiễm</th>
+                          <th class="a11" scope="col">Tổng số ca tử vong</th>
+                          <th class="a11" scope="col">Tổng ca chữa khỏi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- | paginate: { itemsPerPage: 5, currentPage: p } -->
+                        <tr>
+                          <th
+                            id="a"
+                            class="a11"
+                            *ngFor="let data of global | keyvalue"
+                          >
+                            {{ data.value | number: "0.0" }} người
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+                <!-- <pagination-controls class="page" (pageChange)="p = $event"></pagination-controls> -->
               </div>
-              <!-- code  -->
-              <div class="row mt-5">
-                <div class="col">
-                  <div class="card bg-default shadow">
-                    <div class="card-header bg-transparent border-0">
-                      <h3 class="text-white mb-0">Các nước bị nhiễm </h3>
-                      <div class="lol-4 text-right">
-                        <a class="btn btn-sm btn-success mr-2">Add</a>
-                      </div>
+            </div>
+            <!-- code  -->
+            <div class="row mt-5">
+              <div class="col">
+                <div class="card bg-default shadow">
+                  <div class="card-header bg-transparent border-0">
+                    <h3 class="text-white mb-0">Các nước bị nhiễm</h3>
+                    <div class="lol-4 text-right">
+                      <a class="btn btn-sm btn-success mr-2">Add</a>
                     </div>
-                      <!-- <h1 colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</h1> -->
-                    <div class="table-responsive">
-                      <table class="table align-items-center table-dark table-flush tab">
-                        <thead class="thead-dark">
-                          <tr  class="a1">
-                            <th *ngFor="let data of countries[0] | keyvalue" class="a11" scope="col">
-                              {{data.key}}
-                              <i (click)="orderBy(data.key,'asc')" class="fas fa-arrow-up"></i>
-                              <i (click)="orderBy(data.key,'desc')" class="fas fa-arrow-down"></i>
-                            </th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-
-                          <tr *ngFor = "let row of countries  | paginate: { itemsPerPage: 10, currentPage: p }" >
-
-                            <th  id="b" class="a11" *ngFor="let data of row | keyvalue" >
-                              <span *ngIf="data.key === 'Date'">
-                                {{data.value | date: "shortDate" }}
+                  </div>
+                  <!-- <h1 colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</h1> -->
+                  <div class="table-responsive">
+                    <table
+                      class="table align-items-center table-dark table-flush tab"
+                    >
+                      <thead class="thead-dark">
+                        <tr class="a1">
+                          <th
+                            *ngFor="let data of countries[0] | keyvalue"
+                            class="a11"
+                            scope="col"
+                          >
+                            {{ data.key }}
+                            <i
+                              (click)="orderBy(data.key, 'asc')"
+                              class="fas fa-arrow-up"
+                            ></i>
+                            <i
+                              (click)="orderBy(data.key, 'desc')"
+                              class="fas fa-arrow-down"
+                            ></i>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          *ngFor="
+                            let row of countries
+                              | paginate: { itemsPerPage: 10, currentPage: p }
+                          "
+                        >
+                          <th
+                            id="b"
+                            class="a11"
+                            *ngFor="let data of row | keyvalue"
+                          >
+                            <span *ngIf="data.key === 'Date'">
+                              {{ data.value | date: "shortDate" }}
+                            </span>
+                            <div *ngIf="data.key !== 'Date'">
+                              <span *ngIf="data.value === +data.value">
+                                {{ data.value | number: "0.0" }} người
                               </span>
-                                <div *ngIf="data.key !== 'Date'">
-
-                                  <span *ngIf="data.value === (+data.value)">
-                                    {{data.value | number:"0.0" }} người
-                                  </span>
-                                  <span *ngIf="data.value !== (+data.value)">
-                                    {{data.value }}
-                                  </span>
-
-                                </div>
-                                </th>
-
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                              <span *ngIf="data.value !== +data.value">
+                                {{ data.value }}
+                              </span>
+                            </div>
+                          </th>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <pagination-controls class="page" (pageChange)="p = $event"></pagination-controls>
                 </div>
+                <pagination-controls
+                  class="page"
+                  (pageChange)="p = $event"
+                ></pagination-controls>
               </div>
-
-        </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

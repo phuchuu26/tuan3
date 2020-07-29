@@ -46,6 +46,7 @@ import { CustomerEffect } from './store/effects/user.effects';
 // stripe
 
 import { NgxStripeModule } from 'ngx-stripe';
+import { ChartjsComponent } from './pages/chartjs/chartjs.component';
 
 @NgModule({
   imports: [
@@ -104,6 +105,7 @@ import { NgxStripeModule } from 'ngx-stripe';
     AuthLayoutComponent,
     QuanlyuserComponent,
     AdduserComponent,
+    ChartjsComponent,
 
   ],
   providers: [ { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
