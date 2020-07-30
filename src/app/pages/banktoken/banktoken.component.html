@@ -22,20 +22,107 @@
 
           <div class="container">
             <form novalidate (ngSubmit)="buy()" [formGroup]="stripeTest">
-
+              <div class="row mt-5">
+                <div class="col-xl-6 mb-5 mb-xl-0">
               <div class="theinput">
               <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                   <span class="input-group-text"><i style="font-size:25px" class="fab fa-cc-stripe"></i></span>
+                   <span class="input-group-text"><i class="fas fa-globe-africa"></i></span>
                   </div>
-                  <input class="form-control"  formControlName="name"  placeholder="Name" type="text" (focus)="focus = true"
+                  <input class="form-control"  formControlName="country"  placeholder="Country" type="text" (focus)="focus = true"
                   (blur)="focus = false">
+
                 </div>
+
               </div>
+
+
+            </div>
+            <br>
+            <div class="theinput">
+              <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                   <span class="input-group-text"><i class="fab fa-bitcoin"></i></span>
+                  </div>
+                  <input class="form-control"  formControlName="currency"  placeholder="Currency" type="text" (focus)="focus = true"
+                  (blur)="focus = false">
+
+                </div>
+
+              </div>
+
+
+            </div>
+            <br>
+            <div class="theinput">
+              <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                   <span class="input-group-text"><i class="fas fa-signature"></i></span>
+                  </div>
+                  <input class="form-control"  formControlName="account_holder_name"  placeholder="Account Holder Name" type="text" (focus)="focus = true"
+                  (blur)="focus = false">
+
+                </div>
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-xl-6 mb-5 mb-xl-0">
+            <div class="theinput">
+            <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                 <span class="input-group-text"><i style="font-size:25px" class="fab fa-cc-stripe"></i></span>
+                </div>
+                <input class="form-control"  formControlName="account_holder_type"  placeholder="Account Holder Type" type="text" (focus)="focus = true"
+                (blur)="focus = false">
+
+              </div>
+
+            </div>
+
+
+          </div>
+          <br>
+          <div class="theinput">
+            <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                 <span class="input-group-text"><i style="font-size:25px" class="fab fa-cc-stripe"></i></span>
+                </div>
+                <input class="form-control"  formControlName="routing_number"  placeholder="Routing Number" type="text" (focus)="focus = true"
+                (blur)="focus = false">
+
+              </div>
+
+            </div>
+
+
+          </div>
+          <br>
+          <div class="theinput">
+            <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                 <span class="input-group-text"><i style="font-size:25px" class="fab fa-cc-stripe"></i></span>
+                </div>
+                <input class="form-control"  formControlName="account_number"  placeholder="Account Number" type="text" (focus)="focus = true"
+                (blur)="focus = false">
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
             </div>
               <!-- <input type="text" formControlName="name" placeholder="Jane Doe" /> -->
-              <div id="card-element" class="field"></div>
 
               <!-- ngx-stripe-au-bank-account -->
               <button
@@ -45,7 +132,7 @@
               >
                 BUY
               </button>
-
+              <!-- [disabled]="!profileForm.valid" -->
             </form>
             <button  type="button" class="btn btn-secondary mt-4">
               Bank Token : {{token}}

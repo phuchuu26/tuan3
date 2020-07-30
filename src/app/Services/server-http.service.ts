@@ -19,9 +19,16 @@ export class ServerHttpService {
       // Authorization: 'Basic ' + btoa('username:password'),
     }),
   };
+  private REST_API_BankToken = "https://api.stripe.com/v1/tokens";
   private REST_API_SERVER = "https://5f0eb150faef3500160b87ab.mockapi.io/api";
   private REST_API_SERVER_COVID = "https://api.covid19api.com";
   constructor(private httpClient: HttpClient) {}
+
+  public getBankToken(object) {
+    const url = `${this.REST_API_BankToken}` + object ;
+    return this.httpClient.get<any>(url)
+    .pipe(catchError(this.handleError));
+  }
 
   public getDataCovid(): Observable<any> {
     const url = `${this.REST_API_SERVER_COVID}`;

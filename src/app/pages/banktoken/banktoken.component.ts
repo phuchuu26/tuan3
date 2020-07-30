@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from "@angular/core";
 // import 'stripe';
 // import {
 //   StripeCardElementOptions,
@@ -9,18 +9,27 @@ import {
   StripeService,
   Elements,
   Element as StripeElement,
-  ElementsOptions
-} from 'ngx-stripe';
-  import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+  ElementsOptions,
+} from "ngx-stripe";
+import {
+  FormGroup,
+  Validators,
+  FormBuilder,
+  FormControl,
+} from "@angular/forms";
+import { ServerHttpService } from "src/app/Services/server-http.service";
+import {
+  HttpClientModule,
+  HttpHeaders,
+  HttpClient,
+} from "@angular/common/http";
 
 @Component({
-  selector: 'app-banktoken',
-  templateUrl: './banktoken.component.html',
-  styleUrls: ['./banktoken.component.css']
+  selector: "app-banktoken",
+  templateUrl: "./banktoken.component.html",
+  styleUrls: ["./banktoken.component.css"],
 })
 export class BanktokenComponent implements OnInit {
-
-
   elements: Elements;
   card: StripeElement;
   elementsOptions: ElementsOptions = {
@@ -28,12 +37,24 @@ export class BanktokenComponent implements OnInit {
   };
 
   stripeTest: FormGroup;
-  public token;
-  constructor(private fb: FormBuilder, private stripeSvc: StripeService) {}
+  public token: string;
+  constructor(
+    private fb: FormBuilder,
+    private stripeSvc: StripeService,
+    private http: ServerHttpService,
+    private httpClient: HttpClient
+  ) {}
 
   ngOnInit() {
     this.stripeTest = this.fb.group({
-      name: ["", Validators.required],
+      country: new FormControl("us", [Validators.required]),
+      currency: new FormControl("usd", [Validators.required]),
+      account_holder_name: new FormControl("Jenny Rosen", [
+        Validators.required,
+      ]),
+      account_holder_type: new FormControl("individual", [Validators.required]),
+      routing_number: new FormControl("110000000", [Validators.required]),
+      account_number: new FormControl("000123456789", [Validators.required]),
     });
 
     this.stripeSvc.elements(this.elementsOptions).subscribe((elements) => {
@@ -56,16 +77,38 @@ export class BanktokenComponent implements OnInit {
   }
 
   async buy() {
-    const name = this.stripeTest.get("name").value;
-    this.stripeSvc.createToken(this.card, { name }).subscribe((result) => {
-      console.log(result);
-      if (result.token) {
-        console.log("Token", result.token);
-        this.token = result.token.id;
-      } else if (result.error) {
-        console.log("Error", result.error.message);
-      }
-    });
+    const bankAccount = {
+      "bank_account[country]": this.stripeTest.controls.country.value,
+      "bank_account[currency]": this.stripeTest.controls.currency.value,
+      "bank_account[account_holder_name]": this.stripeTest.controls
+        .account_holder_name.value,
+      "bank_account[account_holder_type]": this.stripeTest.controls
+        .account_holder_type.value,
+      "bank_account[routing_number]": this.stripeTest.controls.routing_number
+        .value,
+      "bank_account[account_number]": this.stripeTest.controls.account_number
+        .value,
+    };
+    console.log(Object.values(bankAccount));
+    console.log(bankAccount);
+    this.httpClient
+      .post<any>(
+        "https://api.stripe.com/v1/tokens",
+        Object.keys(bankAccount)
+          .map((key) => key + "=" + bankAccount[key])
+          .join("&"),
+        {
+          headers: new HttpHeaders({
+            Accept: "application/json",
+            "Content-Type": "application/x-www-form-urlencoded",
+            Authorization: "Bearer pk_test_52DU0HNaT3yQjlK5Mg5H6SER00DJsQHl0U",
+          }),
+        }
+      )
+      .subscribe((result) => {
+        console.log(result);
+        this.token = result.id;
+      });
+    // console.log(this.bank_account);
   }
-
 }
